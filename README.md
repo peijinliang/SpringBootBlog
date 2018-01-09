@@ -9,6 +9,5 @@ Create a personal blogging system for Springboot。
 3.Markdown编辑器
 4.SpringSecurity权限校验
 5.Mongodb文件服务器支持
-6.H2 Database 
-7.分布式搜索引擎ElasticSearch
+6.分布式搜索引擎ElasticSearch
 
