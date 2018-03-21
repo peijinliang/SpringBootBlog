@@ -20,7 +20,7 @@ buildscript {
 			url 'http://maven.aliyun.com/nexus/content/groups/public/'
 		}
 	}
-	
+
 	// 依赖关系
 	dependencies {
 		// classpath 声明说明了在执行其余的脚本时，ClassLoader 可以使用这些依赖项
@@ -58,7 +58,7 @@ dependencies {
 
 	// 添加 Spring Data JPA 的依赖
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	
+
 	// 添加 MySQL连接驱动 的依赖
 	compile('mysql:mysql-connector-java:6.0.5')
 
@@ -70,6 +70,9 @@ dependencies {
 
 	// 添加 H2 的依赖
 	runtime('com.h2database:h2:1.4.193')
+
+	// 添加  Spring Data Elasticsearch 的依赖
+	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
 
 	// 添加  Spring Security 依赖
 	compile('org.springframework.boot:spring-boot-starter-security')
