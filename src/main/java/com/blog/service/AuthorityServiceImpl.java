@@ -29,4 +29,5 @@ public class AuthorityServiceImpl implements AuthorityService {
 		return authorityRepository.findOne(id);
 	}
 
+
 }

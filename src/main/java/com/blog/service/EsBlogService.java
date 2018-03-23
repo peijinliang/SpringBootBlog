@@ -27,14 +27,14 @@ public interface EsBlogService {
 	
 	/**
 	 * 更新 EsBlog
-	 * @param EsBlog
+	 * @param esBlog
 	 * @return
 	 */
 	EsBlog updateEsBlog(EsBlog esBlog);
 	
 	/**
 	 * 根据Blog的Id获取EsBlog
-	 * @param id
+	 * @param blogId
 	 * @return
 	 */
 	EsBlog getEsBlogByBlogId(Long blogId);
@@ -63,14 +63,14 @@ public interface EsBlogService {
 	Page<EsBlog> listEsBlogs(Pageable pageable);
 	/**
 	 * 最新前5
-	 * @param keyword
+	 * @param
 	 * @return
 	 */
 	List<EsBlog> listTop5NewestEsBlogs();
 	
 	/**
 	 * 最热前5
-	 * @param keyword
+	 * @param
 	 * @return
 	 */
 	List<EsBlog> listTop5HotestEsBlogs();
@@ -86,4 +86,6 @@ public interface EsBlogService {
 	 * @return
 	 */
 	List<User> listTop12Users();
+
+
 }

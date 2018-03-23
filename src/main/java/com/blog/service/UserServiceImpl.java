@@ -19,54 +19,55 @@ import com.blog.repository.UserRepository;
 /**
  * 用户服务接口实现.
  *
- * @since 1.0.0 2017年5月29日
  * @author Marlon
+ * @since 1.0.0 2017年5月29日
  */
+
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Transactional
-	@Override
-	public User saveOrUpateUser(User user) {
-		return userRepository.save(user);
-	}
+    @Autowired
+    private UserRepository userRepository;
 
-	@Transactional
-	@Override
-	public User registerUser(User user) {
-		return userRepository.save(user);
-	}
+    @Transactional
+    @Override
+    public User saveOrUpateUser(User user) {
+        return userRepository.save(user);
+    }
 
-	@Transactional
-	@Override
-	public void removeUser(Long id) {
-		userRepository.delete(id);
-	}
+    @Transactional
+    @Override
+    public User registerUser(User user) {
+        return userRepository.save(user);
+    }
 
-	@Override
-	public User getUserById(Long id) {
-		return userRepository.findOne(id);
-	}
+    @Transactional
+    @Override
+    public void removeUser(Long id) {
+        userRepository.delete(id);
+    }
 
-	@Override
-	public Page<User> listUsersByNameLike(String name, Pageable pageable) {
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.findOne(id);
+    }
+
+    @Override
+    public Page<User> listUsersByNameLike(String name, Pageable pageable) {
         // 模糊查询
         name = "%" + name + "%";
         Page<User> users = userRepository.findByNameLike(name, pageable);
         return users;
-	}
+    }
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return userRepository.findByUsername(username);
-	}
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username);
+    }
 
-	@Override
-	public List<User> listUsersByUsernames(Collection<String> usernames) {
-		return userRepository.findByUsernameIn(usernames);
-	}
+    @Override
+    public List<User> listUsersByUsernames(Collection<String> usernames) {
+        return userRepository.findByUsernameIn(usernames);
+    }
 
 }

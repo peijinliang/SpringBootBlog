@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.blog.domain.User;
 
 /**
@@ -15,7 +14,9 @@ import com.blog.domain.User;
  * @since 1.0.0 2017年4月29日
  * @author Marlon
  */
+
 public interface UserRepository extends JpaRepository<User, Long>{
+
     /**
      * 根据用户姓名分页查询用户列表
      * @param name
@@ -37,4 +38,5 @@ public interface UserRepository extends JpaRepository<User, Long>{
      * @return
      */
 	List<User> findByUsernameIn(Collection<String> usernames);
+
 }

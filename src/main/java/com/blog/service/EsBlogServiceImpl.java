@@ -42,8 +42,10 @@ public class EsBlogServiceImpl implements EsBlogService {
 
     @Autowired
     private EsBlogRepository esBlogRepository;
+
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
+
     @Autowired
     private UserService userService;
 

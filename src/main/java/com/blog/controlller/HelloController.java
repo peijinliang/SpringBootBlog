@@ -5,14 +5,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Hello 控制器.
- * 
- * @since 1.0.0 2017年4月19日
+ *
  * @author Marlon
+ * @since 1.0.0 2017年4月19日
  */
+
 @RestController
 public class HelloController {
-	@RequestMapping("/hello")
-	public String hello() {
-		return "Hello world!";
-	}
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Hello world!";
+    }
+
 }

@@ -28,4 +28,5 @@ public class Menu {
 		this.name = name;
 		this.url = url;
 	}
+
 }

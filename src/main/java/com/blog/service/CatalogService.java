@@ -12,6 +12,7 @@ import com.blog.domain.User;
  * @author Marlon
  */
 public interface CatalogService {
+
 	/**
 	 * 保存Catalog
 	 * @param catalog
@@ -38,4 +39,5 @@ public interface CatalogService {
 	 * @return
 	 */
 	List<Catalog> listCatalogs(User user);
+
 }

@@ -12,4 +12,5 @@ import com.blog.domain.Authority;
  */
 public interface AuthorityRepository extends JpaRepository<Authority, Long> {
 
+
 }

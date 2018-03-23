@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.blog.domain.Authority;
 import com.blog.domain.User;
 import com.blog.service.AuthorityService;
@@ -29,21 +28,24 @@ import com.blog.vo.Response;
 
 /**
  * User 控制器.
- * 
- * @since 1.0.0 2017年4月29日
+ *
  * @author Marlon
+ * @since 1.0.0 2017年4月29日
  */
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private AuthorityService authorityService;
-	
-	/**
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private AuthorityService authorityService;
+
+    /**
      * 查询所有用户
+     *
      * @param async
      * @param pageIndex
      * @param pageSize
@@ -52,11 +54,11 @@ public class UserController {
      * @return
      */
     @GetMapping
-    public ModelAndView list(@RequestParam(value="async",required=false) boolean async,
-            @RequestParam(value="pageIndex",required=false,defaultValue="0") int pageIndex,
-            @RequestParam(value="pageSize",required=false,defaultValue="10") int pageSize,
-            @RequestParam(value="name",required=false,defaultValue="") String name,
-            Model model) {
+    public ModelAndView list(@RequestParam(value = "async", required = false) boolean async,
+                             @RequestParam(value = "pageIndex", required = false, defaultValue = "0") int pageIndex,
+                             @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
+                             @RequestParam(value = "name", required = false, defaultValue = "") String name,
+                             Model model) {
 
         Pageable pageable = new PageRequest(pageIndex, pageSize);
         Page<User> page = userService.listUsersByNameLike(name, pageable);
@@ -64,11 +66,12 @@ public class UserController {
 
         model.addAttribute("page", page);
         model.addAttribute("userList", list);
-        return new ModelAndView(async==true?"users/list :: #mainContainerRepleace":"users/list", "userModel", model);
+        return new ModelAndView(async == true ? "users/list :: #mainContainerRepleace" : "users/list", "userModel", model);
     }
-	
+
     /**
      * 获取创建表单页面
+     *
      * @param model
      * @return
      */
@@ -78,31 +81,32 @@ public class UserController {
         return new ModelAndView("users/add", "userModel", model);
     }
 
-	
+
     /**
      * 保存或者修改用户
+     *
      * @param user
      * @return
      */
     @PostMapping
     public ResponseEntity<Response> saveOrUpateUser(User user, Long authorityId) {
-
         List<Authority> authorities = new ArrayList<>();
         authorities.add(authorityService.getAuthorityById(authorityId));
         user.setAuthorities(authorities);
-        
+
         try {
             userService.saveOrUpateUser(user);
-        }  catch (ConstraintViolationException e)  {
+        } catch (ConstraintViolationException e) {
             return ResponseEntity.ok().body(new Response(false, ConstraintViolationExceptionHandler.getMessage(e)));
         }
 
         return ResponseEntity.ok().body(new Response(true, "处理成功", user));
     }
 
-	
+
     /**
      * 删除用户
+     *
      * @param id
      * @param model
      * @return
@@ -112,13 +116,14 @@ public class UserController {
         try {
             userService.removeUser(id);
         } catch (Exception e) {
-            return  ResponseEntity.ok().body( new Response(false, e.getMessage()));
+            return ResponseEntity.ok().body(new Response(false, e.getMessage()));
         }
-        return  ResponseEntity.ok().body( new Response(true, "处理成功"));
+        return ResponseEntity.ok().body(new Response(true, "处理成功"));
     }
-	
+
     /**
      * 获取修改用户的界面
+     *
      * @param id
      * @param model
      * @return
@@ -129,4 +134,6 @@ public class UserController {
         model.addAttribute("user", user);
         return new ModelAndView("users/edit", "userModel", model);
     }
+
+
 }

@@ -1,7 +1,6 @@
 package com.blog.domain;
 
 import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,54 +16,60 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Catalog 实体
- * 
- * @since 1.0.0 2017年4月10日
+ *
  * @author Marlon
+ * @since 1.0.0 2017年4月10日
  */
 
-@Entity // 实体
+@Entity
 public class Catalog implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id // 主键
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // 自增长策略
-	private Long id; // 用户的唯一标识
+    private static final long serialVersionUID = 1L;
 
-	@NotEmpty(message = "名称不能为空")
-	@Size(min=2, max=30)
-	@Column(nullable = false) // 映射为字段，值不能为空
-	private String name;
- 
-	@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
-	private User user;
- 
-	protected Catalog() {
-	}
-	
-	public Catalog(User user, String name) {
-		this.name = name;
-		this.user = user;
-	}
-	
-	public Long getId() {
-		return id;
-	}
+    @Id // 主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 自增长策略
+    private Long id; // 用户的唯一标识
 
-	public void setId(Long id) {
-		this.id = id;
-	}
- 
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+    @NotEmpty(message = "名称不能为空")
+    @Size(min = 2, max = 30)
+    @Column(nullable = false) // 映射为字段，值不能为空
+    private String name;
+
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    protected Catalog() {
+
+    }
+
+    public Catalog(User user, String name) {
+        this.name = name;
+        this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

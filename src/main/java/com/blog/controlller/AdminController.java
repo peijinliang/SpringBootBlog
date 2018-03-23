@@ -8,21 +8,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.blog.vo.Menu;
 
 /**
- * 后台管理控制器.
- * 
- * @since 1.0.0 2017年5月28日
+ * 后台管理控制器
+ *
  * @author Marlon
+ * @since 1.0.0 2017年5月28日
  */
+
 @Controller
 @RequestMapping("/admins")
 public class AdminController {
- 
+
     /**
      * 获取后台管理主页面
+     *
      * @param model
      * @return
      */
@@ -33,4 +34,6 @@ public class AdminController {
         model.addAttribute("list", list);
         return new ModelAndView("/admins/index", "model", model);
     }
+
+
 }

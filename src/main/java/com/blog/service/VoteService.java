@@ -9,6 +9,7 @@ import com.blog.domain.Vote;
  * @author Marlon
  */
 public interface VoteService {
+
 	/**
 	 * 根据id获取 Vote
 	 * @param id
@@ -21,4 +22,6 @@ public interface VoteService {
 	 * @return
 	 */
 	void removeVote(Long id);
+
+
 }

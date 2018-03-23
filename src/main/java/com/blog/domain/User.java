@@ -30,6 +30,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @since 1.0.0 2017年4月29日
  * @author Marlon
  */
+
 @Entity // 实体
 public class User implements UserDetails {
 
@@ -62,13 +63,15 @@ public class User implements UserDetails {
 
     @Column(length = 200)
     private String avatar; // 头像图片地址
-	
+
+	// 多对多    jpa  针对多表的一种操作方式
     @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), 
         inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
     
 	protected User() { // 无参构造函数;设为 protected 防止直接使用
+
 	}
 	
 	public User(Long id, String name, String username, String email) {
@@ -169,4 +172,6 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
+
 }
