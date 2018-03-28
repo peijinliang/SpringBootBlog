@@ -3,6 +3,7 @@ package com.blog.controlller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import com.blog.domain.User;
 import com.blog.service.AuthorityService;
 import com.blog.service.UserService;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.validation.Valid;
 
 /**
@@ -21,6 +23,9 @@ import javax.validation.Valid;
  *
  * @author Marlon
  * @since 1.0.0 2017年5月28日
+ * <p>
+ * 1、注册应该分为  第三方注册（获取头像和昵称）、
+ * 2、手机号绑定
  */
 
 @Controller
@@ -56,16 +61,15 @@ public class MainController {
         return "login";
     }
 
-
     //直接进入注册界面
     @GetMapping("/register")
     public String register() {
         return "register";
     }
 
-
     /**
      * 注册用户
+     *
      * @param user
      * @return
      */
@@ -84,7 +88,6 @@ public class MainController {
         return new ModelAndView("/login");
     }
 
-
     /**
      * 退出登录
      *
@@ -93,6 +96,12 @@ public class MainController {
     @GetMapping("/logout")
     public String logout() {
         return "logout";
+    }
+
+    //忘记密码
+    @GetMapping("/forget")
+    public String forget() {
+        return "forget";
     }
 
 

@@ -1,44 +1,51 @@
 <!DOCTYPE html>
 <html
-	xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: header}">
 </head>
-    <body>
+<body>
 
-    <div class="container blog-content-container">
+<div class="container blog-content-container">
 
-		<form th:action="@{~/register}"  method="post">
-			<h2 class="form-signin-heading">注册成为博主</h2>
+    <form th:action="@{~/register}" method="post">
+        <h2 class="form-signin-heading">注册成为博主</h2>
 
-			<div class="form-group col-md-5">
-				<label for="username" class="col-form-label">账号</label>
-				<input type="text" class="form-control" id="username" name="username" maxlength="50" placeholder="请输入账号，至少3个字符，至多20个">
+        <div class="form-group col-md-5">
+            <label for="username" class="col-form-label">账号</label>
+            <input type="text" class="form-control" id="username" name="username" maxlength="50"
+                   placeholder="请输入账号，至少3个字符，至多20个">
+        </div>
 
-			</div>
-			<div class="form-group col-md-5">
-				<label for="email" class="col-form-label">邮箱</label>
-				<input type="email" class="form-control" id="email" name="email" maxlength="50" placeholder="请输入邮箱">
-			</div>
-			<div class="form-group col-md-5">
-				<label for="name" class="col-form-label">姓名</label>
-				<input type="text" class="form-control" id="name" name="name" maxlength="20" placeholder="请输入姓名，至少2个字符，至多20个" >
-			</div>
-			<div class="form-group col-md-5">
-				<label for="password" class="col-form-label">密码</label>
-				<input type="password" class="form-control" id="password" name="password" maxlength="30" placeholder="请输入密码，字母或特殊符号和数字结合" >
-			</div>
-			<div class="form-group col-md-5">
-				<button type="submit" class="btn btn-primary">提交</button>
-			</div>
+        <div class="form-group col-md-5">
+            <label for="email" class="col-form-label">邮箱</label>
+            <input type="email" class="form-control" id="email" name="email" maxlength="50" placeholder="请输入邮箱">
+        </div>
 
-		</form>
+        <div class="form-group col-md-5">
+            <label for="phone" class="col-form-label">手机号</label>
+            <input type="number" class="form-control" id="phone" name="phone" maxlength="50" placeholder="请输入手机号">
+        </div>
 
-    </div> <!-- /container -->
+        <div class="form-group col-md-5">
+            <label for="name" class="col-form-label">姓名</label>
+            <input type="text" class="form-control" id="name" name="name" maxlength="20"
+                   placeholder="请输入姓名，至少2个字符，至多20个">
+        </div>
 
-	<div>
-        <label  th:text="${error} == null ? '' : ${error} "></label>
-	</div>
+        <div class="form-group col-md-5">
+            <label for="password" class="col-form-label">密码</label>
+            <input type="password" class="form-control" id="password" name="password" maxlength="30"
+                   placeholder="请输入密码，字母或特殊符号和数字结合">
+        </div>
 
-	<div th:replace="~{fragments/footer :: footer}">...</div>
-    </body>
+        <div class="form-group col-md-5">
+            <button type="submit" class="btn btn-primary">提交</button>
+        </div>
+
+    </form>
+
+</div> <!-- /container -->
+
+<div th:replace="~{fragments/footer :: footer}">...</div>
+</body>
 </html>

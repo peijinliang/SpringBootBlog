@@ -36,6 +36,7 @@ public class Vote implements Serializable {
     @org.hibernate.annotations.CreationTimestamp  // 由数据库自动创建时间
     private Timestamp createTime;
 
+
     protected Vote() {
 
     }

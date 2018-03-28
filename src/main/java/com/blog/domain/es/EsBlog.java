@@ -49,6 +49,7 @@ public class EsBlog implements Serializable {
     private String tags;  // 标签
 
     protected EsBlog() {  // JPA 的规范要求无参构造函数；设为 protected 防止直接使用
+
     }
 
 

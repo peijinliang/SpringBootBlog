@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import org.springframework.security.core.GrantedAuthority;
 
 /**
@@ -16,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
  *
  * @author Marlon
  * @since 1.0.0 2017年5月30日
+ * 实现 GrantedAuthority  接口 重写 getAuthority（）方法
  */
 
 @Entity
@@ -41,6 +41,7 @@ public class Authority implements GrantedAuthority {
     /* (non-Javadoc)
      * @see org.springframework.security.core.GrantedAuthority#getAuthority()
      */
+
     @Override
     public String getAuthority() {
         return name;
@@ -49,5 +50,6 @@ public class Authority implements GrantedAuthority {
     public void setName(String name) {
         this.name = name;
     }
+
 
 }

@@ -16,13 +16,12 @@ import org.springframework.stereotype.Service;
 import com.blog.domain.User;
 import com.blog.repository.UserRepository;
 
+
 /**
  * 用户服务接口实现.
- *
  * @author Marlon
  * @since 1.0.0 2017年5月29日
  */
-
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
@@ -60,10 +59,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return users;
     }
 
+    /**
+     * 根据用户的账号  来进行加载个人信息
+     * @param username
+     * @return
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username);
     }
+
+
 
     @Override
     public List<User> listUsersByUsernames(Collection<String> usernames) {

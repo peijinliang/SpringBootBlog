@@ -2,9 +2,7 @@ package com.blog.controlller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.validation.ConstraintViolationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -45,7 +43,6 @@ public class UserController {
 
     /**
      * 查询所有用户
-     *
      * @param async
      * @param pageIndex
      * @param pageSize
@@ -66,6 +63,9 @@ public class UserController {
 
         model.addAttribute("page", page);
         model.addAttribute("userList", list);
+
+        // 如果是异步请求 我只更新  mainContainerRepleace  模块的内容
+        // 如果是false   更新整个界面的数据
         return new ModelAndView(async == true ? "users/list :: #mainContainerRepleace" : "users/list", "userModel", model);
     }
 
@@ -77,7 +77,7 @@ public class UserController {
      */
     @GetMapping("/add")
     public ModelAndView createForm(Model model) {
-        model.addAttribute("user", new User(null, null, null, null));
+        model.addAttribute("user", new User(null, null, null, null, null));
         return new ModelAndView("users/add", "userModel", model);
     }
 
@@ -108,11 +108,11 @@ public class UserController {
      * 删除用户
      *
      * @param id
-     * @param model
+     * @param ,  Model model
      * @return
      */
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Response> delete(@PathVariable("id") Long id, Model model) {
+    public ResponseEntity<Response> delete(@PathVariable("id") Long id) {
         try {
             userService.removeUser(id);
         } catch (Exception e) {

@@ -45,7 +45,6 @@ public class CatalogController {
 
     /**
      * 获取分类列表
-     *
      * @param username
      * @param model
      * @return

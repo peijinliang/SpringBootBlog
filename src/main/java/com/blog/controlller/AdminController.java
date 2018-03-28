@@ -23,6 +23,7 @@ public class AdminController {
 
     /**
      * 获取后台管理主页面
+     * 步骤： js默认出发请求 users/list 然后替换 html模块
      *
      * @param model
      * @return
@@ -34,6 +35,5 @@ public class AdminController {
         model.addAttribute("list", list);
         return new ModelAndView("/admins/index", "model", model);
     }
-
 
 }

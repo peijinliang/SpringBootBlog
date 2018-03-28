@@ -19,5 +19,4 @@ public interface AuthorityService {
      */
     Authority getAuthorityById(Long id);
 
-
 }

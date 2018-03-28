@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.blog.domain.Blog;
 import com.blog.domain.Catalog;
 import com.blog.domain.User;
@@ -198,9 +197,7 @@ public class UserspaceController {
             page = blogService.listBlogsByTitleVote(user, keyword, pageable);
         }
 
-
         List<Blog> list = page.getContent();    // 当前所在页面数据列表
-
         model.addAttribute("user", user);
         model.addAttribute("order", order);
         model.addAttribute("catalogId", catalogId);
@@ -251,7 +248,6 @@ public class UserspaceController {
         model.addAttribute("currentVote", currentVote);
         model.addAttribute("isBlogOwner", isBlogOwner);
         model.addAttribute("blogModel", blog);
-
         return "/userspace/blog";
     }
 
